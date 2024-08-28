@@ -1,7 +1,7 @@
 {
-"name": "GataBot-MD",
+"name": "MichiBot",
 "version": "1.7.0", 
-"description": "Super Bot WhatsApp",
+"description": "El mejor bot de Whatsapp",
 "main": "index.js",
 "type": "module",
     
