@@ -1,139 +1,507 @@
 // by https://github.com/elrebelde21
-
-import '../plugins/_content.js'
+ 
 let handler = m => m
 handler.all = async function (m) {
+let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 let chat = global.db.data.chats[m.chat]
 let name = conn.getName(m.sender)
-if (chat.isBanned) return
-let vn = 'https://qu.ax/Ocxm.mp3'
-let bot = `${pickRandom([`*¡𝑬𝒚! 𝑨𝒒𝒖í 𝒆𝒔𝒕𝒐𝒚. 𝒀𝒐 𝒑𝒖𝒆𝒅𝒐 𝒂𝒚𝒖𝒅𝒂𝒓 👉👈 𝑯𝒆𝒚! 𝑰'𝒎 𝒉𝒆𝒓𝒆. 𝑰 𝒄𝒂𝒏 𝒉𝒆𝒍𝒑 🙌*`, `Aqui estoy | Here I am 😼`, `*Hola Aqui estoy yo puedo ayudar? | Hello, here I am, can I help? 😸*`])}`.trim()
-let txt = `*¿Tu Nokia es muy lento y necesitas que tu bot esté activo 24/7?* 📱⏳
+  if (m.isBaileys && m.fromMe) return !0;
+  if (m.isGroup) return !1;
+  if (!m.message) return !0;
 
-¡Tenemos la solución perfecta para ti! 🎉 Mantén tu bot funcionando sin interrupciones con nuestros servidores, Ofrecemos servidores gratuitos y de pago a precios súper accesibles, al alcance de todos. 💸 
+if (/^menu de ventas|menú de ventas|ventas$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Hola buenas, tenemos a la venta:
+🔸Bot de etiquetas para grupos 24/7
+🔸Bot de etiquetas propio personalizado
+🔸APK de spam
+🔸APK de Spotify premium
 
-🖥️ *Totalmente compatible con GataBot:* Disfruta al máximo de su potencial en nuestros servidores de alto rendimiento, asegurando una experiencia fluida y de alta calidad. El staff de GataBot y CorinPlus Host se encarga de que disfrutes de todas sus funciones al máximo. 😺✨
+Selecciona tu opción escribiendo lo que necesites
 
-🟢 \`\`\`Información del Host\`\`\`
+EJEMPLO:
+bot de etiquetas
+bot personalizado
+APK de spam
+APK de Spotify premium`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-💻 *Página:*
-https://dash.corinplus.com
-
-*🟢 Dashboard:*
-https://dash.corinplus.com
-
-⚙️ *Panel*
-https://panel.corinplus.com
-
-💥 *Comunidad de WhatsApp:*
-https://chat.whatsapp.com/HR3OLhsuZPqCMImzuHcuON
-
-*🟣 Discord:*
-https://discord.com/invite/bjKpRBtkHv
-
-🧡 *Canal de WhatsApp:*
-https://whatsapp.com/channel/0029VakUvreFHWpyWUr4Jr0g
-
-🗣📲 *Contacto:*
-• wa.me/5214531287294
-• wa.me/573147616444
-• https://www.facebook.com/elrebelde21
-
-No esperes más y lleva tu bot al siguiente nivel con nuestro servicio de alojamiento. ¡Es fácil, rápido y económico! 💪🚀` 
-
-if (/^infohost$/i.test(m.text)) {
- await conn.sendMessage(m.chat, { text: txt,
-contextInfo:{
-forwardedNewsletterMessageInfo: { 
-newsletterJid: '120363301598733462@newsletter', 
-serverMessageId: '', 
-newsletterName: 'CorinPlus-Host ☁️' }, 
-forwardingScore: 9999999,
-isForwarded: true, 
-"externalAdReply": {
-"showAdAttribution": true,
-"containsAutoReply": true,
-title: `🤖 𝐂O𝐑𝐈𝐍𝐏𝐋𝐔𝐒-𝐇𝐎𝐒𝐓 🤖`,
-body: `¡El plus que necesitas!_`,
-"previewType": "PHOTO",
-thumbnailUrl: 'https://telegra.ph/file/551d3d544d7bc607fd337.jpg', 
-sourceUrl: accountsgb}}},
-{ quoted: fkontak})
-} 
- 
-if (/^bot$/i.test(m.text)) {
-await conn.reply(m.chat, bot, m, fakeChannel)
-await conn.sendPresenceUpdate('recording', m.chat)    
-await conn.sendFile(m.chat, vn, 'bot.mp3', null, m, true, { type: 'audioMessage', ptt: true, sendEphemeral: true, quoted: m })   
 }
 
-if (/^e$/i.test(m.text) ) { //sin prefijo 
-let teks = `${pickRandom([`Que bueno sabe la letra E`, `eeeeee`])}`.trim()
-conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})}
+if (/^bot de etiquetas|bot para grupos|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Estos son los precios que tenemos por 3 grupos permanentes:
+S/10🇵🇪
+$3000🇨🇱
+$3000🇦🇷
+$12000🇨🇴
+$80🇲🇽
+$3🇺🇸
+$45🇧🇴
+$110🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-/*if (/^Mande porno|porno|paja$/i.test(m.text) ) { //sin prefijo 
-let teks = `${pickRandom([`no puedo esta contra las política del grupo.😸`, `_uff miren un pajero_`, `_pagame y paso mi pack😏🥵_`, `_que_`, `_que quiere pija dice 🤣_`, `_pasa el pack de tu hermana😏_`, `_mire un gilipolla_`, `_siuuu sexo sexo sexo😈_`, '_callate putito_'])}`.trim()
-conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})}*/
+}
 
-if (/^reglas|normas|Reglas$/i.test(m.text) ) { //sin prefijo 
-conn.reply(m.chat, `*╭┅〘 ⚠️ 𝗢𝗯𝗲𝗱𝗲𝗰𝗲 𝗹𝗮𝘀 𝗿𝗲𝗴𝗹𝗮𝘀 ⚠️ 〙*
-➽❌ 𝐏𝐫𝐨𝐡𝐢𝐛𝐢𝐝𝐨 𝐥𝐥𝐚𝐦𝐚𝐫 𝐚𝐥 𝐁𝐨𝐭
-➽❌ 𝐏𝐫𝐨𝐡𝐢𝐛𝐢𝐝𝐨 𝐒𝐩𝐚𝐦 𝐚𝐥 𝐁𝐨𝐭
-➽❌ 𝐍𝐨 𝐚𝐠𝐫𝐞𝐠𝐚𝐫 𝐚𝐥 𝐁𝐨𝐭
-➽❌ 𝐑𝐞𝐬𝐩𝐞𝐭𝐚 𝐥𝐨𝐬 𝐭𝐞𝐫𝐦𝐢𝐧𝐨𝐬 𝐲 𝐜𝐨𝐧𝐝𝐢𝐜𝐢𝐨𝐧𝐞𝐬
-*╰═┅ৡৢ͜͡✦═╡ 𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨 ╞═┅ৡৢ͜͡✦═╯*`, fkontak, m)}
+if (/^bot personalizado|bot propio personalizado|bot de etiquetas propio personalizado|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Estos son los precios que tenemos para bot propio personalizado:
+S/20🇵🇪
+$6000🇨🇱
+$6000🇦🇷
+$25000🇨🇴
+$150🇲🇽
+$6🇺🇸
+$90🇧🇴
+$220🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-if (/^Quiero un bot|como obtengo un bot?|Quiero un bot?|quiero un bot|solicitud|solicitó bot|solicito bot|Necesito un bot|necesito un bot$/i.test(m.text) ) {
-conn.reply(m.chat,  `\`⚡¿Quieres un bot para tu grupo?\`
+}
+if (/^chips|chip chileno|chips chilenos|info del chip|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Estos son los precios que tenemos para números de chip +56:
+S/6🇵🇪
+$2000🇨🇱
+$2000🇦🇷
+$8000🇨🇴
+$50🇲🇽
+$2🇺🇸
+$25🇧🇴
+$60🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-*🐈 Tiene varias opciones. Puedes instalarlo tú mismo siguiendo los pasos de instalación:*
-* #instalarbot
+}
+if (/^APK de spam|APK para spam|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Estos son los precios que tenemos para APK de spam:
+S/10🇵🇪
+$3000🇨🇱
+$3000🇦🇷
+$12000🇨🇴
+$80🇲🇽
+$3🇺🇸
+$45🇧🇴
+$110🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-*🧡 Puede hacerte un sub bot mandando el siguiente comando:*
-* #serbot (escanea el QR) 
-* #jadibot --code (Código de 8 dígitos)
+}
+if (/^APK de Spotify premium|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Estos son los precios que tenemos para APK de Spotify premium:
+S/10🇵🇪
+$3000🇨🇱
+$3000🇦🇷
+$12000🇨🇴
+$80🇲🇽
+$3🇺🇸
+$45🇧🇴
+$110🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-*💖 Puedes solicitarlo haciendo una donación voluntaria a través de PayPal o Mercado Pago arg.*
+}
 
-> 🚀 El bot estará activo 24/7 para tu grupo.
+if (/^APK de seguidores|APK para seguidores|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Estos son los precios que tenemos para APK de seguidores:
+S/10🇵🇪
+$3000🇨🇱
+$3000🇦🇷
+$12000🇨🇴
+$80🇲🇽
+$3🇺🇸
+$45🇧🇴
+$110🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-\`⚡ ¿Por dónde puedo donar?\`
-> A través de nuestro PayPal o Mercado Pago.
+}
 
-*❇️PayPal:*
-• https://www.paypal.com/paypalme/OficialGD
+if (/^bot de etiquetas|bot para grupos|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🤖El bot de etiquetas para grupos 24/7 es un bot que contiene comandos como stickers, musica, etiqueta general,  inteligencia artificial(chatgpt), y esta activo siempre, es mas rapido que cualquier otro ya que pagamos un servicio para mantenerlo siempre activo y eficiente`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-*❇️Mercado pago:*
+}
 
-*• Alias :* OficialGB
-*• CVU :* 0000003100059201491917
+if (/^bot personalizado|bot propio personalizado|bot de etiquetas propio personalizado|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🤖El bot de etiquetas propio personalizado incluye lo mismo que el bot para grupos, con la diferencia que este puede personalizarse, lleva tu nombre, tu numero como moderador del bot, tu instagram, tu foto o logo, y la etiqueta general es personalizada tambien`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-\`⏩ Siguiente paso ⏩\`
+}
+if (/^números de chip chilenos +56|chip chilenos +56|chips +56|info del chip|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🪪Los numeros de chip chilenos +56 son numeros que te permitiran registrarlos en whatsapp, telegram, google, instagram o en la red social de tu preferencia, lo mejor de todo es que te servira como una segunda cuenta de whatsapp, y podras pedir codigo al numero cuando mas lo necesites`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-> Una vez realizado el pago, puedes enviar un comprobante de envío del dinero (captura de pantalla) para que pueda agregar el bot a tu grupo:
+}
+if (/^APK de spam|APK para spam|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`👾El APK de spam, es un APK que te permite ser tu propio spamer y hacer llegar tu producto a mas personas, viene de regalo con 1500 comunidades para hacer tu spam mas efectivo`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-• https://chat.whatsapp.com/FDRfhecUGrCEQswkg8FUYz
-• ${ig}
-• https://www.facebook.com/elrebelde21
+}
+if (/^APK de Spotify premium|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🎶El APK de spotify premium es un APK que te permitira disfrutar de todas las funciones premium de spotify, sin necesidad de pagar mensualmente ya que este APK es permanente, podras escuchar musica ilimitadamente, saltar las canciones que desees, descargar tus playlists y sobre todo no tendras anuncios molestos`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-\`⚡ ¿El bot estará activo 24/7?\`
-_*Sí, nuestro bot está alojado en un servidor de pago para mantenerlo activo 24/7 (por eso también solicitamos donaciones para mantenerlo en funcionamiento) 💞*_
+}
 
-> *𝙂𝙧𝙖𝙘𝙞𝙖𝙨 𝙥𝙤𝙧 𝙨𝙪𝙨 𝙥𝙧𝙚𝙛𝙚𝙧𝙚𝙣𝙘𝙞𝙖𝙨 𝙚𝙣 ${gt} 🐈💞*`, fkontak, {contextInfo: {externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: `Hola ${name} 👋`, body: wm, previewType: 0, thumbnail: gataImg, sourceUrl: accountsgb }}})}
- 
-if (/^¿Qué es un Bot?|¿Qué es Bot?|Qué es Bot|qué es Bot|QUÉ ES UN BOT|¿QUÉ ES UN BOT?|¿qué es un Bot?|qué es un Bot|que es un Bot|Qué es un Bot?|Que es un Bot? $/i.test(m.text) ) {
-conn.reply(m.chat, `\`✨ ¿𝐐𝐮𝐞́ 𝐞𝐬 𝐮𝐧 𝐁𝐨𝐭 𝐝𝐞 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩? ✨\`
+if (/^APK de seguidores|APK para seguidores|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`👾El APK de seguidores es un APK que te permitira ganar seguidores de una manera rapida y sencilla, te ayudara a tener mas alcance en tus redes y tus publicaciones llegaran a mas personas`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
 
-🍃 _Un Bot es una inteligencia programada que permite realizar actividades dependiendo de lo que solicite. En temas de WhatsApp, es posible crear stickers, descargar música, vídeos, crear logos, buscar imágenes, interactuar en modo de conversación,  participar en juegos dentro de chats etc..._
+}
 
-🍃 *_Para ver el menú de comandos puedes usar:_*
-#menu
+if (/^bot de etiquetas|bot para grupos|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🤔¿DESEA CONTINUAR CON LA COMPRA?🤔*
+Para poder brindarle los datos para realizar el pago
 
-🐈 𝙂𝙖𝙩𝙖 𝘿𝙞𝙤𝙨 🐈`, m)}  
+*Si desea adquirir algun producto escriba:*
+Deseo continuar
+*Si no desea adquirir ningun producto escriba:*
+No gracias`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+if (/^bot personalizado|bot propio personalizado|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🤔¿DESEA CONTINUAR CON LA COMPRA?🤔*
+Para poder brindarle los datos para realizar el pago
+
+*Si desea adquirir algun producto escriba:*
+Deseo continuar
+*Si no desea adquirir ningun producto escriba:*
+No gracias`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+if (/^números de chip chilenos +56|chip chilenos +56|chips +56|precios|info del chip|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🤔¿DESEA CONTINUAR CON LA COMPRA?🤔*
+Para poder brindarle los datos para realizar el pago
+
+*Si desea adquirir algun producto escriba:*
+Deseo continuar
+*Si no desea adquirir ningun producto escriba:*
+No gracias`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^APK de Spotify premium|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🤔¿DESEA CONTINUAR CON LA COMPRA?🤔*
+Para poder brindarle los datos para realizar el pago
+
+*Si desea adquirir algun producto escriba:*
+Deseo continuar
+*Si no desea adquirir ningun producto escriba:*
+No gracias`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^APK de seguidores|APK para seguidores|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🤔¿DESEA CONTINUAR CON LA COMPRA?🤔*
+Para poder brindarle los datos para realizar el pago
+
+*Si desea adquirir algun producto escriba:*
+Deseo continuar
+*Si no desea adquirir ningun producto escriba:*
+No gracias`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^APK de spam|APK para spam|precios|info del bot|informacion|informacion del bot$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🤔¿DESEA CONTINUAR CON LA COMPRA?🤔*
+Para poder brindarle los datos para realizar el pago
+
+*Si desea adquirir algun producto escriba:*
+Deseo continuar
+*Si no desea adquirir ningun producto escriba:*
+No gracias`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^deseo continuar|si quiero comprar$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`Selecciona tu método de pago por favor:
+Argentina🇦🇷
+Perú🇵🇪
+Chile🇨🇱
+Colombia🇨🇴
+México🇲🇽
+Estados Unidos🇺🇸
+Bolivia🇧🇴
+Paraguay🇵🇾
+Uruguay🇺🇾`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^no, gracias|no quiero comprar|no gracias$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*🫶GRACIAS A USTED, VUELVA PRONTO🫶*
+En caso se arrepienta de su decisión, puede volver a interactuar con nuestro chatbot dentro de una hora
+
+Que tenga lindo dia<3`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^bolivia🇧🇴|🇧🇴$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🇧🇴 BOLIVIA
+INGRESE AL SIGUIENTE ENLACE PARA RECIBIR EL CODIGO QR PARA REALIZAR EL PAGO:
+https://telegra.ph/file/a2e43b0140c74a737d502.png`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^perú🇵🇪|peru🇵🇪|🇵🇪|perú|peru$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🇵🇪 PERU
+TITULAR: JAIR GONZALES 
+
+YAPE
+967699188
+
+PLIN
+955095498
+
+BCP
+19177757684012
+CCI: 00219117775768401250
+
+INTERBANK
+8983383526827
+CCI: 00389801338352682746`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^mexico|méxico|mexico🇲🇽|méxico🇲🇽|🇲🇽$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🇲🇽 MEXICO
+TITULAR: ESMERALDA MIRELES
+
+🏦 BANCO AZTECA
+5165760411850620
+
+🏦 BANCO STP
+646700146401786732
+
+🏦 BANCO BANORTE
+072700012100058870`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^colombia|colombia🇨🇴|🇨🇴$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🇨🇴 COLOMBIA
+TITULAR: Juan Rudas
+
+🏦 NEQUI
+3005371659`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^uruguay|uruguay🇺🇾|🇺🇾$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`URUGUAY 🇺🇾
+INGRESAR A LA APP DE PREX Y A TRANSFERIR A OTROS PAISES(PERU) Y TRANSFERIR EL PRECIO QUE SALE EN SOLES
+
+PREX
+Marcelo Gonzales
+12156998`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+
+if (/^paypal|estados unidos🇺🇸|🇺🇸$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🇺🇸 PAY PAL
+https://paypal.me/Richetti123`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^chile|chile🇨🇱|🇨🇱$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`🇨🇱Cta rut : 
+20.993.589-9
+👤Nombre:
+Paula Aquino`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^argentina|argentina🇦🇷|🇦🇷$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`CBU 🇦🇷
+0000013000032232325985
+
+🏷️Alias
+44713108.PREX 
+
+👤Nombre:
+Sofía ortiz`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^bolivia🇧🇴|🇧🇴$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^perú🇵🇪|peru🇵🇪|🇵🇪|perú|peru$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^mexico|méxico|mexico🇲🇽|méxico🇲🇽|🇲🇽$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^colombia|colombia🇨🇴|🇨🇴$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^uruguay|uruguay🇺🇾|🇺🇾$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^paraguay|paraguay🇵🇾|🇵🇾$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^paypal|estados unidos🇺🇸|🇺🇸$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^chile|chile🇨🇱|🇨🇱$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^argentina|argentina🇦🇷|🇦🇷$/i.test(m.text) ) { //sin prefijo 
+    let teks = `
+${pickRandom([`*UNA VEZ REALIZADA LA TRANSFERENCIA ENVIAR LA FOTO DEL PAGO CON EL SIGUIENTE TEXTO:*
+
+*✅PAGO REALIZADO✅*`])}
+`.trim()
+conn.reply(m.chat, teks, m, { mentions: { mentionedJid: [m.sender] }})
+
+}
+
+if (/^¿que es un bot?|Que es un bot$/i.test(m.text) ) { //sem prefixo
+    conn.reply(m.chat, `╭┄〔 *${wm}* 〕┄⊱
+┆ ——————«•»——————
+┆ ☆::¿𝐐𝐮𝐞́ 𝐞𝐬 𝐮𝐧 𝐁𝐨𝐭 𝐝𝐞 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩?::☆
+┆——————«•»——————
+┆ 𝐔𝐧 𝐁𝐨𝐭 𝐞𝐬 𝐮𝐧𝐚 𝐢𝐧𝐭𝐞𝐥𝐢𝐠𝐞𝐧𝐜𝐢𝐚 𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐢𝐚𝐥 𝐪𝐮𝐞 𝐫𝐞𝐚𝐥𝐢𝐳𝐚 𝐭𝐚𝐫𝐞𝐚𝐬
+┆ 𝐪𝐮𝐞 𝐥𝐞 𝐢𝐧𝐝𝐢𝐪𝐮𝐞 𝐜𝐨𝐧 𝐜𝐨𝐦𝐚𝐧𝐝𝐨𝐬, 𝐞𝐧 𝐞𝐥 𝐜𝐚𝐬𝐨 𝐝𝐞 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩 
+┆ 𝐩𝐮𝐞𝐝𝐞𝐬 𝐜𝐫𝐞𝐚𝐫 𝐬𝐭𝐢𝐜𝐤𝐞𝐫𝐬, 𝐝𝐞𝐬𝐜𝐚𝐫𝐠𝐚𝐫 𝐦𝐮́𝐬𝐢𝐜𝐚, 𝐯𝐢𝐝𝐞𝐨𝐬, 
+┆ 𝐜𝐫𝐞𝐚𝐫 𝐥𝐨𝐠𝐨𝐬 𝐩𝐞𝐫𝐬𝐨𝐧𝐚𝐥𝐢𝐳𝐚𝐝𝐨𝐬 𝐲 𝐦𝐮𝐜𝐡𝐨 𝐦𝐚𝐬, 
+┆ 𝐞𝐬𝐭𝐨 𝐝𝐞 𝐟𝐨𝐫𝐦𝐚 𝐚𝐮𝐭𝐨𝐦𝐚𝐭𝐢𝐳𝐚𝐝𝐚, 𝐨 𝐬𝐞𝐚 𝐪𝐮𝐞 𝐮𝐧 𝐡𝐮𝐦𝐚𝐧𝐨 
+┆ 𝐧𝐨 𝐢𝐧𝐭𝐞𝐫𝐟𝐢𝐞𝐫𝐞 𝐞𝐧 𝐞𝐥 𝐩𝐫𝐨𝐜𝐞𝐬𝐨 
+┆ 𝐏𝐚𝐫𝐚 𝐯𝐞𝐫 𝐞𝐥 𝐦𝐞𝐧𝐮́ 𝐝𝐞 𝐜𝐨𝐦𝐚𝐧𝐝𝐨𝐬 𝐩𝐮𝐞𝐝𝐞𝐬 𝐮𝐬𝐚𝐫 #menu
+┆ 
+┆ 「 MichiBot 」
+╰━━━⊰ 𓃠 ${vs} ⊱━━━━დ*`, m) //wm, null, [['Menu', '#menu']], m) botones :V
+
+}  
 return !0 
 }
 export default handler
 
 function pickRandom(list) {
-return list[Math.floor(Math.random() * list.length)]
+    return list[Math.floor(Math.random() * list.length)]
 }
+
+           
