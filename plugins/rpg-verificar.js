@@ -581,7 +581,7 @@ externalAdReply: {
 title: wm,
 body: user.name,
 thumbnailUrl: pp, 
-sourceUrl: accountsgb',
+sourceUrl: accountsgb,
 mediaType: 1,
 showAdAttribution: true,
 renderLargerThumbnail: true
