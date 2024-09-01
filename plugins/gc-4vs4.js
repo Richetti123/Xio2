@@ -1,6 +1,6 @@
 import fg from 'api-dylux' 
 import fetch from 'node-fetch'
-import { savefrom, facebookdl, facebookdlv2 } from '@bochilteam/scraper'
+import { savefrom, facebookdl } from '@bochilteam/scraper'
 import fbDownloader from 'fb-downloader-scrapper'
 import { facebook } from "@xct007/frieren-scraper"
 import axios from 'axios'
@@ -72,7 +72,7 @@ await conn.sendFile(m.chat, url3, 'error.mp4', '*𝙰𝚀𝚄𝙸 𝙴𝚂𝚃�
 } catch (err6) {
 console.log('6 ' + err6)    
 try {
-const { result } = await facebookdl(args[0]).catch(async _ => await facebookdlv2(args[0])).catch(async _ => await savefrom(args[0]))
+const { result } = await facebookdl(args[0]).catch(async _ => await savefrom(args[0]))
 for (const { url, isVideo } of result.reverse()) await conn.sendFile(m.chat, url, `facebook.${!isVideo ? 'bin' : 'mp4'}`, '*𝙰𝚀𝚄𝙸 𝙴𝚂𝚃𝙰 𝚂𝚄 𝚅𝙸𝙳𝙴𝙾*', m)    
 } catch (err7) {
 console.log('7 ' + err7)    
