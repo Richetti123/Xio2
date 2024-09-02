@@ -30,7 +30,7 @@
     "license": "GPL-3.0-or-later",
     "dependencies": {
         "@adiwajshing/keyed-db": "^0.2.4",
-        "@bochilteam/scraper": "^5.0.1",
+        "@bochilteam/scraper": "github:cifumo/scraper",
         "@brandond/findthelyrics": "^2.0.5",
         "@green-code/music-track-data": "^2.0.3",
         "@nechlophomeriaa/spotifydl": "1.0.11",
