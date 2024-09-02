@@ -2,7 +2,8 @@
 
 import fetch from 'node-fetch';
 import axios from 'axios';
-import {load} from 'cheerio';
+import * as cheerio from 'cheerio'
+
 const handler = async (m, {text, usedPrefix, command, conn}) => {
 if (!text) throw`️${lenguajeGB['smsAvisoMG']()}${mid.smsMalused7}\n${usedPrefix + command} El Gato con botas`
   let aaaa;
@@ -27,7 +28,7 @@ export default handler;
 const safeLoad = async (url, options = {}) => {
   try {
     const {data: pageData} = await axios.get(url, options);
-    const $ = load(pageData);
+    const $ = cheerio.load(pageData);
     return $;
   } catch (err) {
     if (err.response) {
