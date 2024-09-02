@@ -1,6 +1,6 @@
 import fg from 'api-dylux' 
 import axios from 'axios'
-import cheerio from 'cheerio'
+import * as cheerio from 'cheerio'
 import { tiktokdl } from '../lib/tiktok.js';
 import { tiktok } from "@xct007/frieren-scraper";
 
